@@ -1,9 +1,9 @@
 let robotScore = []
-function collectSocre(){
+function collectSocre(x){
     for(var i = 0; i < robotScore.length; i++){
-        robotScore[i] = robot[i].score
+        x[i] = robot[i].score
     }
     return x
 }
-setTimeout(collectSocre, 5*(10**3))
-console.log(robotScore)
+let result = setTimeout(collectSocre(robotScore), 5000)
+console.log(result)

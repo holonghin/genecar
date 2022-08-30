@@ -45,7 +45,6 @@ function setup() {
 	updateLocalParams(0);
 
 	GUI();
-	
 
 }
 
@@ -71,7 +70,7 @@ function createGUI(i) {
 }
 
 function draw() {
-
+	
 	//set the fps//////////////////////////////////////////////////////////////
 	FPS = fpsSlider.value();
 	frameRate(FPS);
