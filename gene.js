@@ -5,4 +5,4 @@ function collectSocre() {
     }
     console.log(robotScore)
 }
-setTimeout(collectSocre, 10000)
+setTimeout(collectSocre, 30000)
