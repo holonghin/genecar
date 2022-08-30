@@ -9,7 +9,7 @@ var currentID = 0;
 var robotNoCounter = 0;
 var FPS = 30;
 let RobotsStore;
-var isAutoDelCar = true;
+var isAutoDelCar = false;
 
 var robotWidth;
 var sensorNo;
@@ -33,24 +33,10 @@ function setup() {
 	pixelDensity(2.0);
 	frameRate(FPS);
 
-	//Create the first 4 robots////////////////////////////////////////////////
-	for (var i = 0; i < 4; i++) {
-		robots.push(new Robot(robotNoCounter, 210, 61, -90));
-		robotNoCounter++;
+	//Create the first 50 robots////////////////////////////////////////////////
+	for (var i = 0; i < 50; i++) {
+		addCarEvent();
 	}
-
-	robots[1].sensorNo = 5;
-	robots[1].sensor_distance = 100;
-
-	robots[2].sensor_distance = 266;
-
-	robots[3].robotWidth = 100.;
-	robots[3].sensorNo = 9;
-	robots[3].sensor_distance = 174;
-	robots[3].sensor_width = 13.;
-	robots[3].maxVel = 8.5;
-	robots[3].Kp = 2.35;
-	robots[3].Kd = 3.45;
 
 	for (var i = 0; i < robots.length; i++) {
 		updateLocalParams(i);
