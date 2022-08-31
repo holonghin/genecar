@@ -1,1 +1,1 @@
-setTimeout(saveEvent, 25000)
+setTimeout(saveEvent, 30000)
