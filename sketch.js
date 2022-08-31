@@ -197,7 +197,7 @@ function delCarEvent() {
  */
 function saveEvent() {
     for (var i = 0; i < robots.length; i++) {
-	if (robots[i].score < 220) {
+	if ((robots[i].score > 0) && (robots[i].score < 220)) {
 		delCarEvent();
 	}
     }
