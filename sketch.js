@@ -96,10 +96,6 @@ function draw() {
 			}
 		}
 	}
-	for (var i = 0; i < robots.length; i++) {
-		if (robots[i].score < 220) {
-			delCarEvent();
-		}
 	}
 	//draw the start line///////////////////////////////////////////////////////
 	fill(127, 127, 255, 127);
@@ -200,6 +196,10 @@ function delCarEvent() {
  * 
  */
 function saveEvent() {
+    for (var i = 0; i < robots.length; i++) {
+		if (robots[i].score < 220) {
+			delCarEvent();
+		}
 	saveJSON(robots, 'RobotsStore');
 }
 
