@@ -1,7 +1,7 @@
 
 /**
  * 
- * @param {nuumber} i 
+ * @param {number} i
  */
 function updateLocalParams(i) {
 	robotWidth = robots[i].robotWidth;

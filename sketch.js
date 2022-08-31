@@ -9,7 +9,7 @@ var currentID = 0;
 var robotNoCounter = 0;
 var FPS = 30;
 let RobotsStore;
-var isAutoDelCar = false;
+var isAutoDelCar = true;
 
 var robotWidth;
 var sensorNo;
