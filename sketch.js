@@ -197,9 +197,10 @@ function delCarEvent() {
  */
 function saveEvent() {
     for (var i = 0; i < robots.length; i++) {
-		if (robots[i].score < 220) {
-			delCarEvent();
-		}
+	if (robots[i].score < 220) {
+		delCarEvent();
+	}
+    }
 	saveJSON(robots, 'RobotsStore');
 }
 
