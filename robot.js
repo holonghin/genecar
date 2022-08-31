@@ -223,6 +223,7 @@ class Robot {
                 this.score = this.timer - this.last_timer;
                 this.enterTimerZone = true;
                 this.last_timer = this.timer;
+
             }
         }
         else this.enterTimerZone = false;
