@@ -70,6 +70,7 @@ function createGUI(i) {
 }
 
 function draw() {
+	
 	//set the fps//////////////////////////////////////////////////////////////
 	FPS = fpsSlider.value();
 	frameRate(FPS);
@@ -96,7 +97,7 @@ function draw() {
 			}
 		}
 	}
-	}
+
 	//draw the start line///////////////////////////////////////////////////////
 	fill(127, 127, 255, 127);
 	noStroke();
@@ -192,14 +193,16 @@ function delCarEvent() {
 	winnerScore = 9999;
 }
 
+
 /**
  * 
  */
 function saveEvent() {
-    for (var i = 0; i < robots.length; i++) {
-	if ((robots[i].score > 0) && (robots[i].score < 220)) {
-		delCarEvent();
-	}
+	for (var i = 0; i < robots.length; i++) {
+        if ((robots[i].score < 245) || (robots[i].theta > 0)) {
+            currentID = i;
+            delCarEvent();
+        }
     }
 	saveJSON(robots, 'RobotsStore');
 }
