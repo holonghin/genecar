@@ -33,8 +33,26 @@ function setup() {
 	pixelDensity(2.0);
 	frameRate(FPS);
 
-	//Create the first 50 robots////////////////////////////////////////////////
-	for (var i = 0; i < 51; i++) {
+	//Create the first 504 robots////////////////////////////////////////////////
+	for (var i = 0; i < 4; i++) {
+		robots.push(new Robot(robotNoCounter, 210, 61, -90));
+		robotNoCounter++;
+	}
+
+	robots[1].sensorNo = 5;
+	robots[1].sensor_distance = 100;
+
+	robots[2].sensor_distance = 266;
+
+	robots[3].robotWidth = 100.;
+	robots[3].sensorNo = 9;
+	robots[3].sensor_distance = 174;
+	robots[3].sensor_width = 13.;
+	robots[3].maxVel = 8.5;
+	robots[3].Kp = 2.35;
+	robots[3].Kd = 3.45;
+
+	for (var i = 0; i < 500; i++) {
 		addCarEvent();
 	}
 
