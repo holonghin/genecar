@@ -2,7 +2,7 @@ var sel_pop = [];
 var cr = 8;
 var mr = 1;
 var max_ite = 15;
-let parent_data = Array.from(Array(20), () => new Array(8));
+let parent_data = Array.from(Array(25), () => new Array(8));
 let child_data = Array.from(Array(30), () => new Array(8));
 let new_pop = Array.from(Array(50), () => new Array(8));
 function genetic_algorithm(){
@@ -36,7 +36,7 @@ function selectEvent() {
     sel_pop.sort(function(a, b){return a.score - b.score;});
     var j = 0;
     for(var i = 0; i < sel_pop.length; i++){
-        if(j == 20){
+        if(j == 25){
             break;
         } 
         if ((sel_pop[i].score > 245) && (sel_pop[i].theta < 0)){
@@ -53,12 +53,13 @@ function selectEvent() {
    }
 //    print(sel_pop);
 //    print(parent_data);
+    saveJSON(parent_data, 'parentData');
 }
 
 function addData(){
     var j = 0;
      for(var i = 0; i < sel_pop.length; i++){
-        if(j == 25){
+        if(j == 50){
             break;
         }
         if ((sel_pop[i].score > 245) && (sel_pop[i].theta < 0)){
@@ -186,7 +187,7 @@ function print(a) {
 function _random(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
-setTimeout(genetic_algorithm, 300000)
+setTimeout(selectEvent, 180000)
 
 
 

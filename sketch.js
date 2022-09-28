@@ -234,15 +234,15 @@ function loadEvent() {
 function handleFile(file) {
 	if (file.type === 'application' && file.subtype === 'json') {
 		RobotsStore = file.data;
-		setTimeout(selectEvent, 30002);
-		print(RobotsStore);
+		setTimeout(selectEvent, 35005);
+		// print(RobotsStore);
 		clearRobots()
-		robots[0].score = 0
+		robots[robots.length - 1].score = 0
 		winner = 0;
 	    winnerScore = 9999;
-		robots[0].x = 210
-		robots[0].y = 61
-		robots[0].theta = -90
+		robots[robots.length - 1].x = 210
+		robots[robots.length - 1].y = 61
+		robots[robots.length - 1].theta = -90
 		for (var i = 0; i < 10; i++) {
 			addCarEvent();
 		}
