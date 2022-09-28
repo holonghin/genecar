@@ -1,4 +1,4 @@
-/*var sel_pop = [];
+var sel_pop = [];
 var cr = 8;
 var mr = 1;
 var max_ite = 25;
@@ -142,6 +142,7 @@ function clearRobots(){
 }
 
 function addRobots(){
+    setTimeout(selectEvent, 30005)
     clearRobots()
     robots[0].score = 0
     winner = 0;
@@ -185,8 +186,8 @@ function print(a) {
 function _random(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
-for (var i = 1; i <= max_ite; i++) {setTimeout(genetic_algorithm, 30000*i+i*100);}
-*/
+setTimeout(genetic_algorithm, 300000)
+
 
 
 

@@ -52,7 +52,7 @@ function setup() {
 	robots[3].Kp = 2.35;
 	robots[3].Kd = 3.45;
 
-	for (var i = 0; i < 500; i++) {
+	for (var i = 0; i < 300; i++) {
 		addCarEvent();
 	}
 
