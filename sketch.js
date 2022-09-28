@@ -34,7 +34,7 @@ function setup() {
 	frameRate(FPS);
 
 	//Create the first 50 robots////////////////////////////////////////////////
-	for (var i = 0; i < 50; i++) {
+	for (var i = 0; i < 51; i++) {
 		addCarEvent();
 	}
 
@@ -198,12 +198,6 @@ function delCarEvent() {
  * 
  */
 function saveEvent() {
-	for (var i = 0; i < robots.length; i++) {
-        if ((robots[i].score < 245) || (robots[i].theta > 0)) {
-            currentID = i;
-            delCarEvent();
-        }
-    }
 	saveJSON(robots, 'RobotsStore');
 }
 
@@ -222,25 +216,41 @@ function loadEvent() {
 function handleFile(file) {
 	if (file.type === 'application' && file.subtype === 'json') {
 		RobotsStore = file.data;
+		setTimeout(selectEvent, 30002);
 		print(RobotsStore);
-
+		clearRobots()
+		robots[0].score = 0
+		winner = 0;
+	    winnerScore = 9999;
+		robots[0].x = 210
+		robots[0].y = 61
+		robots[0].theta = -90
+		for (var i = 0; i < 10; i++) {
+			addCarEvent();
+		}
 		for (var i = 0; i < RobotsStore.length; i++) {
 			robots.push(new Robot(robotNoCounter, 210, 61, -90));
-			robots[robots.length - 1].robotWidth = RobotsStore[i].robotWidth;
-			robots[robots.length - 1].sensorNo = RobotsStore[i].sensorNo;
-			robots[robots.length - 1].sensor_distance = RobotsStore[i].sensor_distance;
-			robots[robots.length - 1].sensor_width = RobotsStore[i].sensor_width;
-			robots[robots.length - 1].maxAccel = RobotsStore[i].maxAccel;
-			robots[robots.length - 1].maxVel = RobotsStore[i].maxVel;
-			robots[robots.length - 1].Kp = RobotsStore[i].Kp;
-			robots[robots.length - 1].Kd = RobotsStore[i].Kd;
+			robots[robots.length - 1].robotWidth = RobotsStore[i][0];
+			robots[robots.length - 1].sensorNo = RobotsStore[i][1];
+			robots[robots.length - 1].sensor_distance = RobotsStore[i][2];
+			robots[robots.length - 1].sensor_width = RobotsStore[i][3];
+			robots[robots.length - 1].maxAccel = RobotsStore[i][4];
+			robots[robots.length - 1].maxVel = RobotsStore[i][5];
+			robots[robots.length - 1].Kp = RobotsStore[i][6];
+			robots[robots.length - 1].Kd = RobotsStore[i][7];
 			updateLocalParams(robots.length - 1);
 			createGUI(robots.length - 1);
 			robotNoCounter++;
 		}
 		updateLocalParams(currentID);
-		fileSelectButton.remove();
 	}
+	for (var i = 0; i < robots.length; i++) {
+		updateLocalParams(i);
+		createGUI(i);
+	}
+	updateLocalParams(0);
+	GUI();
+	fileSelectButton.remove();
 }
 
 /**

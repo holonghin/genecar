@@ -1,7 +1,7 @@
 var sel_pop = [];
 var cr = 8;
 var mr = 1;
-var max_ite = 8;
+var max_ite = 25;
 let parent_data = Array.from(Array(20), () => new Array(8));
 let child_data = Array.from(Array(30), () => new Array(8));
 let new_pop = Array.from(Array(50), () => new Array(8));
@@ -16,12 +16,12 @@ function genetic_algorithm(){
         }
         crossover_mutation(i, parent_data[p1], parent_data[p2]);
     }
-    print(child_data);
+    // print(child_data);
     for (var i = 0; i < 20; i++) new_pop[i] = parent_data[i];
     for (var i = 20; i < 50; i++) new_pop[i] = child_data[i - 20];
-    print(new_pop);
+    // print(new_pop);
     addRobots();
-    print(robots);
+    // print(robots);
 }
 
 function selectEvent() {
@@ -32,13 +32,7 @@ function selectEvent() {
     //     }
     // }
     for (var i = 0; i < robots.length; i++) sel_pop[i] = robots[i];
-
     sel_pop.sort(function(a, b){return a.score - b.score;});
-    for (var i = 0; i < 55; i++) {
-        // currentID = i;
-        delCarEvent();
-    }
-
     var j = 0;
     for(var i = 0; i < sel_pop.length; i++){
         if(j == 20){
@@ -56,8 +50,8 @@ function selectEvent() {
             j++;
         } 
    }
-   print(sel_pop);
-   print(parent_data);
+//    print(sel_pop);
+//    print(parent_data);
 }
 
 function addData(){
@@ -78,7 +72,7 @@ function addData(){
             j++;
         } 
     }
-    console.log(parent_data)
+    // console.log(parent_data)
 }
 
 function crossover_mutation(n, parent1, parent2) {
@@ -119,10 +113,10 @@ function crossover_mutation(n, parent1, parent2) {
                     p_list[z3][3] = _random(3, 30);
                     break;
                 case 4:
-                    p_list[z3][4] =  _random(5, 7) + Math.random();
+                    p_list[z3][4] =  0.5;
                     break;
                 case 5:
-                    p_list[z3][5] = 0.5;
+                    p_list[z3][5] = _random(5, 7) + Math.random();
                     break;
                 case 6:
                     p_list[z3][6] = _random(0, 5);
@@ -140,14 +134,25 @@ function crossover_mutation(n, parent1, parent2) {
     }
 }
 function clearRobots(){
-    for (var i = 0; i < 55; i++) {
+    for (var i = 0; i < 70; i++) {
         // currentID = i;
         delCarEvent();
     }
 }
 
 function addRobots(){
-    for (var i = 0; i < 50; i++) {
+    clearRobots()
+    robots[0].score = 0
+    winner = 0;
+    winnerScore = 9999;
+    robots[0].x = 210
+    robots[0].y = 61
+    robots[0].theta = -90
+    robotNoCounter = 2
+    for (var i = 0; i < 10; i++) {
+        addCarEvent();
+    }
+    for (var i = 0; i < new_pop.length; i++) {
         robots.push(new Robot(robotNoCounter, 210, 61, -90));
         robotNoCounter++;
         robots[robots.length - 1].robotWidth = new_pop[i][0];
@@ -159,11 +164,17 @@ function addRobots(){
         robots[robots.length - 1].Kp = new_pop[i][6];
         robots[robots.length - 1].Kd = new_pop[i][7];
         updateLocalParams(robots.length - 1);
-        createGUI(robots.length - 1);
-        updateLocalParams(currentID);
+		createGUI(robots.length - 1);
+		robotNoCounter++;
         // if(i % 2 == 0) addCarEvent();
     } 
-    resetPosition();
+    updateLocalParams(currentID);
+    for (var i = 0; i < robots.length; i++) {
+		updateLocalParams(i);
+		createGUI(i);
+	}
+	updateLocalParams(0);
+	GUI();
 }
 
 function print(a) {
