@@ -1,7 +1,7 @@
 var sel_pop = [];
 var cr = 8;
 var mr = 1;
-var max_ite = 25;
+var max_ite = 15;
 let parent_data = Array.from(Array(20), () => new Array(8));
 let child_data = Array.from(Array(30), () => new Array(8));
 let new_pop = Array.from(Array(50), () => new Array(8));
