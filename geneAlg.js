@@ -135,7 +135,7 @@ function crossover_mutation(n, parent1, parent2) {
     }
 }
 function clearRobots(){
-    for (var i = 0; i < 70; i++) {
+    for (var i = 0; i < 315; i++) {
         // currentID = i;
         delCarEvent();
     }
